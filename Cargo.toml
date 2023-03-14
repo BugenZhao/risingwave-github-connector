@@ -1,0 +1,29 @@
+[package]
+name = "risingwave-github-connector"
+version = "0.1.0"
+edition = "2021"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.69"
+dotenv = "0.15.0"
+futures = "0.3"
+octocrab = { git = "https://github.com/XAMPPRocky/octocrab", rev = "dbead9a", features = ["stream"] }
+prost = "0.11"
+risingwave_pb = { git = "https://github.com/risingwavelabs/risingwave", rev = "8b09f5e4e641e70c9d96d3880d622ad05ea8b7ce" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "0.2", package = "madsim-tokio", features = [
+    "fs",
+    "rt",
+    "rt-multi-thread",
+    "sync",
+    "macros",
+    "time",
+    "signal",
+] }
+tokio-stream = "0.1.12"
+tonic = { version = "0.2.14", package = "madsim-tonic" }
+
+[patch."https://github.com/risingwavelabs/risingwave"]
+workspace-hack = { path = "empty" }
